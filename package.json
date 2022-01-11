@@ -33,6 +33,7 @@
     ]
   },
   "devDependencies": {
-    "react-scripts": "^3.4.0"
+    "react-scripts": "^3.4.0",
+    "typescript": "^3.9.10"
   }
 }
