@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import {RolesWebAPI} from './WebAPIs/RolesWebAPI';
 
 function App() {
-  const [value,setValue] = useState ('');
+  const [value,setValue] = useState<string> ('');
   useEffect(()=>{
     FetchData()
   },[])
