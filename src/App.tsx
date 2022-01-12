@@ -1,19 +1,28 @@
+import "./App.css"
 import React, { useState,useEffect } from 'react';
-import {RolesWebAPI} from './WebAPIs/RolesWebAPI';
+import { Layout,Menu } from 'antd';
+import DomainsPage from "./Pages/DomainsPage";
+import AdminPage from "./Pages/AdminPage";
 
-function App() {
-  const [value,setValue] = useState<string> ('');
-  useEffect(()=>{
-    FetchData()
-  },[])
+const { Header, Content, Footer } = Layout;
 
-  return <div>{value}</div>;
+export default function App() {
 
-  async function FetchData()
-  {
-    const roles = await RolesWebAPI.Get();
-    setValue(JSON.stringify(roles))
-  }
+  return (
+    <Layout className="layout">
+    <Header>
+      <div className="logo" />
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['/Domain']}>
+        <Menu.Item key="/Domain">Domain</Menu.Item>
+      </Menu>
+    </Header>
+    <Content style={{ padding: '0 64px' }}>
+      <div className="site-layout-content">
+        <AdminPage />
+        <DomainsPage />
+      </div>
+    </Content>
+    <Footer style={{ textAlign: 'center' }}>Authorization Admin</Footer>
+  </Layout>
+  )
 }
-
-export default App;

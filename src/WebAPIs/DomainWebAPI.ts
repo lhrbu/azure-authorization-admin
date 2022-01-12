@@ -7,7 +7,7 @@ type DomainWebAPIMethods = "/api/domain-getall" | "/api/domain-get/"
 type DomainAdminWebAPIMethods = "/api/domain-add" | "/api/domain-delete/"
 
 export const DomainWebAPI = {
-    GetAll:async() => (await WebAPI.get(<DomainWebAPIMethods>"/api/domain-get/")).data as Domain[],
+    GetAll:async() => (await WebAPI.get(<DomainWebAPIMethods>"/api/domain-getall")).data as Domain[],
     Get:async(domainName:string)=>{
         const url = `${<DomainWebAPIMethods>"/api/domain-get/"}${encodeURI(domainName)}`
         return (await WebAPI.get(<DomainWebAPIMethods>"/api/domain-get/")).data as Domain

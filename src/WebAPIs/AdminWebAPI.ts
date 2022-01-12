@@ -1,13 +1,14 @@
 import WebAPI from "./WebAPI";
 
-let accessToken = ""
-
-function SetAccessToken(token:string)
-{ accessToken = token;}
+function SetAccessToken(accessToken:string)
+{ window.localStorage.setItem("X-AccessToken-Base64",accessToken)}
 
 function Get()
 {
-    WebAPI.defaults.headers.common["X-AccessToken-Base64"] = accessToken
+    const accessToken = window.localStorage.getItem("X-AccessToken-Base64")
+    if(accessToken){
+        WebAPI.defaults.headers.common["X-AccessToken-Base64"] = accessToken
+    }
     return WebAPI;
 }
 
