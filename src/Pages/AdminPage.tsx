@@ -1,11 +1,16 @@
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button,Switch, message } from 'antd';
 import { useForm } from 'antd/lib/form/Form';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminWebAPI  from "../WebAPIs/AdminWebAPI"
 
 export default function AdminPage()
 {
     const [form] = useForm()
+    const [tokenAssigned,setTokenAssigned]=useState<boolean>(false)
+    useEffect(()=>{
+        setTokenAssigned(AdminWebAPI.HasAccessToken())
+    },[])
+
     return (
         <Form form={form}
             name="basic"
@@ -13,6 +18,7 @@ export default function AdminPage()
             wrapperCol={{ span: 8 }}
             onFinish={values=>{
                 AdminWebAPI.SetAccessToken(values.Base64AccessToken);
+                setTokenAssigned(AdminWebAPI.HasAccessToken())
                 message.success("set access token successfully!",2)
             }}
         >
@@ -23,9 +29,20 @@ export default function AdminPage()
             >
                 <Input />
             </Form.Item>
+            <Form.Item label="Token Assigned">
+                <Switch checked={tokenAssigned}/>
+            </Form.Item>
+
             <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
                 <Button type="primary" htmlType="submit">
-                Submit
+                    Submit
+                </Button>
+                <Button type="primary" danger style={{marginLeft:"12px"}} 
+                    onClick={()=>{
+                        AdminWebAPI.RemoveAccessToken()
+                        setTokenAssigned(AdminWebAPI.HasAccessToken())
+                        }}>
+                    Expire Token
                 </Button>
             </Form.Item>
         </Form>

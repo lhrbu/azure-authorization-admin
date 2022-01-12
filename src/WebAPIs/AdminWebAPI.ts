@@ -1,7 +1,19 @@
 import WebAPI from "./WebAPI";
 
 function SetAccessToken(accessToken:string)
-{ window.localStorage.setItem("X-AccessToken-Base64",accessToken)}
+{ 
+    window.localStorage.setItem("X-AccessToken-Base64",accessToken)
+}
+
+function RemoveAccessToken()
+{
+    window.localStorage.removeItem("X-AccessToken-Base64")
+}
+
+function HasAccessToken()
+{
+    return window.localStorage.getItem("X-AccessToken-Base64")?true:false
+}
 
 function Get()
 {
@@ -13,7 +25,7 @@ function Get()
 }
 
 const AdminWebAPI = {
-    SetAccessToken,Get
+    SetAccessToken,RemoveAccessToken,HasAccessToken,Get
 }
 
 export default AdminWebAPI
