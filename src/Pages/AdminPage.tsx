@@ -13,7 +13,6 @@ export default function AdminPage()
 
     return (
         <Form form={form}
-            name="basic"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 8 }}
             onFinish={values=>{
@@ -25,7 +24,7 @@ export default function AdminPage()
             <Form.Item
                 label="Base64 Access Token"
                 name="Base64AccessToken"
-                rules={[{ required: true, message: 'Please input your username!' }]}
+                rules={[{ required: true}]}
             >
                 <Input />
             </Form.Item>

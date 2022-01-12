@@ -14,13 +14,9 @@ const RoleEditor: React.FC<{ Role?:Role,OnSubmit?: (role: Role) => void }> =
         const [form] = useForm()
         const [domains, setDomains] = useState<Domain[]>([])
         const [loading,setLoading]=useState<boolean>(true)
-
-        
-
         useEffect(()=>{
             FetchData()
         },[])
-
         useEffect(()=>{
             if(Role){
                 form.setFieldsValue({...Role})

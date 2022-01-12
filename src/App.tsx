@@ -4,12 +4,14 @@ import { Layout, Menu } from 'antd';
 import DomainsPage from "./Pages/DomainsPage";
 import AdminPage from "./Pages/AdminPage";
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import AddUserPage from "./Pages/AddUserPage";
 
 const { Header, Content, Footer } = Layout;
 
 const RouteNames = {
   Admin:"/",
-  Domains:"/Domains"
+  Domains:"/Domains",
+  AddUser:"/AddUser"
 }
 
 
@@ -27,14 +29,17 @@ export default function App()
             <Menu.Item key={RouteNames.Domains}>
               <NavLink end to={RouteNames.Domains}>Domains</NavLink>
             </Menu.Item>
+            <Menu.Item key={RouteNames.AddUser}>
+              <NavLink end to={RouteNames.AddUser}>Add User</NavLink>
+            </Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: '0 64px' }}>
           <div className="site-layout-content">
             <Routes>
               <Route path={RouteNames.Domains} element={<DomainsPage />} />
+              <Route path={RouteNames.AddUser} element={<AddUserPage />} />
               <Route path={RouteNames.Admin}  element={<AdminPage />}/>
-              
             </Routes>
           </div>
         </Content>
