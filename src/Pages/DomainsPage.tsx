@@ -35,7 +35,7 @@ export default function DomainsPage()
                             key={domain.Name} 
                             closable={false}>
                             {
-                                <Row gutter={[16, 16]}>
+                                <Row gutter={[16, 16]} style={{marginTop:"16px"}}>
                                     {
                                         domain.Roles!.map(role => (
                                             <Col span={8} key={role.DomainName + role.Name}>

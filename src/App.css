@@ -4,8 +4,15 @@
   background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.page-title {
+  color: #fefefe;
+  padding: 8px 16px;
+  margin: 0 0 48px 0;
+  font-size: 16px;
+}
+
 .site-layout-content {
   min-height: 90vh;
-  padding: 2rem 24px;
+  padding: 36px 24px;
   background: #fefefe;
 }

@@ -3,7 +3,7 @@ import AdminWebAPI from "./AdminWebAPI"
 import WebAPI from "./WebAPI"
 
 type UsersWebAPI = "/api/users-add" | "/api/users-updatepassword"
-type UsersAdminWebAPI = "/api/users-assignroles" | "/api/roles-delete/"
+type UsersAdminWebAPI = "/api/users-assignroles" | "/api/users-delete/" | "/api/users-getuserid"
 export interface UpdatePasswordPayload
 {
     UserId:string
@@ -28,5 +28,6 @@ export const UsersAdminWebAPI = {
     Delete:async(userId:string)=>{
         const url = `${<UsersAdminWebAPI>"/api/roles-delete/"}${encodeURI(userId)}}`
         await AdminWebAPI.Get().delete(url)
-    }
+    },
+    GetUserId:async()=>(await AdminWebAPI.Get().get(<UsersAdminWebAPI>"/api/users-getuserid")).data as string[]
 }
